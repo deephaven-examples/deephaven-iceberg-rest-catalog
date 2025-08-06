@@ -1,4 +1,4 @@
-version: "3"
+
 
 services:
   spark-iceberg:
@@ -78,7 +78,7 @@ services:
       - ./data:/data
       - ~/.aws:/.aws
     environment:
-      - START_OPTS=-Xmx16g -DAuthHandlers=io.deephaven.auth.AnonymousAuthenticationHandler
+      - START_OPTS=-Xmx16g -DAuthHandlers=io.deephaven.auth.AnonymousAuthenticationHandler -Ddeephaven.application.dir=./data/app.d
       - AWS_REGION=us-east-1
       - AWS_ACCESS_KEY_ID=admin
       - AWS_SECRET_ACCESS_KEY=password
