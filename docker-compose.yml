@@ -79,5 +79,9 @@ services:
       - ~/.aws:/.aws
     environment:
       - START_OPTS=-Xmx16g -DAuthHandlers=io.deephaven.auth.AnonymousAuthenticationHandler
+      - AWS_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password
+      - S3_ENDPOINT=http://minio:9000
 networks:
   iceberg_net:
