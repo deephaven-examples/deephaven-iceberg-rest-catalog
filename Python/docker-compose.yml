@@ -3,7 +3,7 @@
 services:
   spark-iceberg:
     container_name: spark-iceberg
-    build: .
+    build: ..
     networks:
       iceberg_net:
     depends_on:
@@ -75,13 +75,14 @@ services:
     ports:
       - "${DEEPHAVEN_PORT:-10000}:10000"
     volumes:
-      - ./data:/data
-      - ~/.aws:/.aws
+      - ../data:/data
     environment:
-      - START_OPTS=-Xmx16g -DAuthHandlers=io.deephaven.auth.AnonymousAuthenticationHandler -Ddeephaven.application.dir=/data/app.d
+      - START_OPTS=-Xmx16g -DAuthHandlers=io.deephaven.auth.AnonymousAuthenticationHandler -Ddeephaven.application.dir=/data/Python/app.d
       - AWS_REGION=us-east-1
       - AWS_ACCESS_KEY_ID=admin
       - AWS_SECRET_ACCESS_KEY=password
       - S3_ENDPOINT=http://minio:9000
+      - CATALOG_URI=http://rest:8181
+      - CATALOG_WAREHOUSE=s3://warehouse/
 networks:
   iceberg_net:
