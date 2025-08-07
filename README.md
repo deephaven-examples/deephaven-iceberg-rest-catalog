@@ -40,6 +40,12 @@ This deployment is used by Deephaven's Iceberg user guide. You can follow all of
 - [Python](https://deephaven.io/core/docs/how-to-guides/data-import-export/iceberg/)
 - [Groovy/Java](https://deephaven.io/core/groovy/docs/how-to-guides/data-import-export/iceberg/)
 
+To start the deployment, `cd` into either the `Python` or `Groovy` directory and run:
+
+```bash
+docker compose up
+```
+
 ## License
 
 See [License](./LICENSE).
