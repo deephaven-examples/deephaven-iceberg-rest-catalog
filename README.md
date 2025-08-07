@@ -31,6 +31,8 @@ This deployment is intended for local development and testing. It is not intende
 
 The deployment is defined in [`docker-compose.yml`](./docker-compose.yml). All Docker containers use default images except for the `spark-iceberg` container, which uses a custom image built off the `tabulario/spark-iceberg` image. The custom image adds a Jupyter notebook that gets run on startup to build the catalog with a table. Once the Jupyter notebook completes, the container shuts down.
 
+In addition, this deployment uses Deephaven's [application mode](https://deephaven.io/core/docs/how-to-guides/application-mode/) to bind several variables used in the guides to environment variables.
+
 ## Use
 
 This deployment is used by Deephaven's Iceberg user guide. You can follow all of the steps in the guide using this deployment. See the documentation below:
