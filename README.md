@@ -2,7 +2,7 @@
 
 This repository contains a [Deephaven](https://deephaven.io/) deployment for Apache Iceberg.
 
-It deploys an Apache Iceberg [REST catalog](https://www.tabular.io/apache-iceberg-cookbook/getting-started-catalog-background/) with [MinIO](https://www.min.io/) as the [S3](https://aws.amazon.com/s3/)-compatible object store. Deephaven can be used to query the catalog.
+It deploys an Apache Iceberg [REST catalog](https://www.tabular.io/apache-iceberg-cookbook/getting-started-catalog-background/) with [RustFS](https://rustfs.com/) as the [S3](https://aws.amazon.com/s3/)-compatible object store. Deephaven can be used to query the catalog.
 
 This Docker deployment is based on the [Apache Spark quickstart for Iceberg](https://iceberg.apache.org/spark-quickstart/). The deployment is extended by adding Deephaven to the same Docker network as the query engine. In addition, it automates the creation of a sample Iceberg catalog and table on startup.
 
@@ -15,12 +15,12 @@ This deployment uses [Docker](https://www.docker.com/) and [Docker Compose](http
 The application launches five Docker containers:
 
 - Deephaven
-- MinIO
-- The [MinIO client](https://github.com/minio/mc)
+- RustFS
+- A one-shot [AWS CLI](https://aws.amazon.com/cli/) container that creates the `warehouse` bucket
 - An Apache Iceberg REST catalog
 - An Apache Spark server with Iceberg support
 
-The fifth container shuts down once the Iceberg catalog and table are created, leaving only four running.
+The AWS CLI container exits after it creates the bucket, and the Spark container shuts down once the Iceberg catalog and table are created, leaving three running.
 
 ### About the deployment
 
